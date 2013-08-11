@@ -148,11 +148,13 @@ class LCD
 		void print(char c);
 		void print(const char c[]);
 		void clear();
-		void blink(unsigned short b);
-		void cursor(unsigned short c);
+		void blink(bool b);
+		void cursor(bool c);
 		LCD setW(unsigned short w, bool f = true);
 		LCD setPos(unsigned short x, unsigned short y);
 		LCD align(bool a = LCD_LEFT_ALIGN);
+	protected:
+	private:
 		void send8bitCommand(unsigned short cmd){
 			this->send(cmd,0,LCD_8_BITS);
 		}
@@ -162,8 +164,6 @@ class LCD
 		void sendData(unsigned short data){
 			this->send(data,1,LCD_4_BITS);
 		}
-	protected:
-	private:
 		void runSetWidth(unsigned short len, bool side);
 		void pulseEnable();
 		void send(unsigned short cmd, unsigned short rs, unsigned short dataLength);

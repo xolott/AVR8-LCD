@@ -127,12 +127,12 @@ void LCD::clear(){
 	Delay_ms(2);
 }
 
-void LCD::blink(unsigned short b){
+void LCD::blink(bool b){
 	BIT_WRITE(this->_displayControl,0,b);
 	this->send4bitCommand(this->_displayControl);
 }
 
-void LCD::cursor(unsigned short c){
+void LCD::cursor(bool c){
 	BIT_WRITE(this->_displayControl,1,c);
 	this->send4bitCommand(this->_displayControl);
 }
